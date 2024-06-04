@@ -1,0 +1,14 @@
+setuptools
+wheel
+pillow
+librosa==0.10.2
+matplotlib==3.9.0
+
+torch
+torchvision
+torchaudio
+torchsummary
+
+chromadb==0.5.0
+
+opencv-python==4.9.0.80

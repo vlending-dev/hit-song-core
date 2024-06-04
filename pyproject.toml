@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hit-song-core"
+dynamic = ["version", "dependencies"]
+readme = "README.md"
+description = "hit-song core"
+classifiers= [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.12",
+    "Environment :: GPU :: NVIDIA CUDA :: 11.8",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+authors = [
+    { name = "Vlending Co., Ltd.", email = "dev@vlending.co.kr" },
+]
+license = { file = "LICENSE" }
+requires-python = "!=2.*, >=3.12, <4"
+
+[project.urls]
+Homepage = "https://hitsong.vlending.kr"
+Repository = "https://github.com/vlendingdev/hit-song-core"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+exclude= [
+    "tests*",
+]
+
+[tool.setuptools.dynamic]
+version = {attr = "hitsong.__version__"}
+dependencies = {file = ["requirements.txt"]}
