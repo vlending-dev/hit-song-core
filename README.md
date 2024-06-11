@@ -1,9 +1,14 @@
 # HIT-SONG-CORE
 
 ## 1. Introduction
+This is a core library for [hitsong.vlending.kr](https://hitsong.vlending.kr).
+It provides functions such as spectrogram generation, model inference, and similar song search.
 
 
 ## 2. Installation
+```bash
+pip install hit-song-core
+```
 
 ## 3. Usage
 
@@ -51,4 +56,7 @@ result = storage.query(vector, n=10)
 for key, value in result.items():
     print(f'{key}: {value}')
 ```
+
+## 4. Reference
+ - [https://github.com/namngduc/MiRemd](https://github.com/namngduc/MiRemd)
 
