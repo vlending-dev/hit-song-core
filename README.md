@@ -1,26 +1,62 @@
 # HIT-SONG-CORE
 
-## 1. [Introduction](#introduction)
-This is a simple project that uses the Spotify API to get the top 10 songs of a given artist. The project is written in Python and uses the Flask framework to create a simple web server that serves the top 10 songs of a given artist. The project is divided into two parts: the backend and the frontend. The backend is responsible for fetching the top 10 songs of a given artist from the Spotify API and the frontend is responsible for displaying the top 10 songs of a given artist in a simple web page.
-## 2. [Installation](#installation)
-To install the project, you need to have Python installed on your machine. You can download Python from the official website: https://www.python.org/downloads/. Once you have Python installed on your machine, you can install the project by following these steps:
+## 1. Introduction
+This is a core library for [hitsong.vlending.kr](https://hitsong.vlending.kr).
+It provides functions such as spectrogram generation, model inference, and similar song search.
 
-## 3. [Usage](#usage)
-To use the project, you need to run the backend and the frontend separately. To run the backend, you need to run the following command in the terminal:
 
+## 2. Installation
 ```bash
-from hitsong import in_memory_storage
+pip install hit-song-core
+```
 
+## 3. Usage
+
+### 1) Generate Spectrogram
+
+```python
+from hitsongcore import generate_spectrogram
+
+file_path = 'path/to/file.mp3'
+result = generate_spectrogram(file_path, is_force=False)
+
+spectrogram_path = 'path/to/spectrogram/spectrogram.jpg'
+slice_path = 'path/to/slice/0.jpg'
+```
+
+### 2) Calc Prediction
+
+```python
+from hitsongcore import get_model_loader, get_in_memory_storage
+
+file_path = 'path/to/file.mp3'
+
+device = 'cuda'  # 'cpu' or 'cuda'
+model_path = 'path/to/model.pt'
+num_classes = 8  # example
+
+model_loader = get_model_loader(device, model_path, num_classes)
+prediction = model_loader.calc_prediction(file_path)
+
+storage = get_in_memory_storage()
+storage.add('1', prediction)
 
 ```
 
-This will start the Flask web server on port 5000. To run the frontend, you need to run the following command in the terminal:
+### 3) Get Nearest Songs
 
-```bash
+```python
+from hitsongcore import get_in_memory_storage
 
+storage = get_in_memory_storage()
+
+vector = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8]
+
+result = storage.query(vector, n=10)
+for key, value in result.items():
+    print(f'{key}: {value}')
 ```
 
-This will start the Flask web server on port 8000. Once both the backend and the frontend are running, you can open your web browser and go to http://localhost:8000 to see the top 10 songs of a given artist.
-
-## 4. [Contributing](#contributing)
+## 4. Reference
+ - [https://github.com/namngduc/MiRemd](https://github.com/namngduc/MiRemd)
 
