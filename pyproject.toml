@@ -35,5 +35,5 @@ exclude = [
 ]
 
 [tool.setuptools.dynamic]
-version = { attr = "hitsong.__version__" }
+version = { attr = "hitsongcore.__version__" }
 dependencies = { file = ["requirements.txt"] }
