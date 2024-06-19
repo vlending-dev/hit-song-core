@@ -63,6 +63,12 @@ class InMemoryStorage(BaseStorage):
             result[distance_key_list[_key.item()]] = f'{_value.item():.4f}'
         return result
 
+    def __len__(self):
+        return len(self._data)
+
+    def get_keys(self):
+        return list(self._data.keys())
+
 
 class ChromaDBStorage(BaseStorage):
     def __init__(self, db_mode: ChromaDBMode, db_path: str = None, host: str = None, port: int = None, collection_name: str = None):
@@ -126,3 +132,11 @@ class ChromaDBStorage(BaseStorage):
             # default function : chromadb.utils.distance_functions.cosine
             result_dict[_ids] = f'{1 - _distances:.4f}'
         return result_dict
+
+    def __len__(self):
+        query_result = self.collection.get()
+        return len(query_result['ids'])
+
+    def get_keys(self):
+        query_result = self.collection.get()
+        return query_result['ids']
