@@ -128,7 +128,7 @@ class ChromaDBStorage(BaseStorage):
         )
         query_result = self.collection.query(**params)
         result_dict = dict()
-        for _ids, _distances in zip(query_result['ids'], query_result['distances']):
+        for _ids, _distances in zip(query_result['ids'][0], query_result['distances'][0]):
             # default function : chromadb.utils.distance_functions.cosine
             result_dict[_ids] = f'{1 - _distances:.4f}'
         return result_dict
