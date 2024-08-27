@@ -1,16 +1,16 @@
 setuptools
 wheel
-pillow==10.3.0
-librosa==0.10.2
-matplotlib==3.9.0
+pillow~=10.3.0
+librosa~=0.10.2
+matplotlib~=3.9.0
 
-numpy==1.26.4
+numpy~=1.26.4
 
-torch==2.3.0
-torchaudio==2.3.0
-torchsummary==1.5.1
-torchvision==0.18.0
+torch~=2.3.0
+torchaudio~=2.3.0
+torchsummary~=1.5.1
+torchvision~=0.18.0
 
-chromadb==0.5.0
+chromadb~=0.5.0
 
-opencv-python==4.10.0.82
+opencv-python~=4.10.0.82
